@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,9 +7,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "app.css" %}">
 {% block css_files %}{% endblock %}
 </head>
 <body>
+    <header id="main-navigation">
+            <h1>
+                <a href="{% url 'starting-page' %}">Paul's Blog</a>
+            </h1>
+            <nav>
+                <a href="{% url 'posts-page' %}">All Posts</a>
+            </nav>
+    </header>
 {% block content %}
 {% endblock %}
 </body>

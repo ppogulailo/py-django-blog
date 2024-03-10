@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block title %}
-    My Block
+    My Blog
 {% endblock %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/posts.css" %}">
+    <link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock %}
 {% block content %}
-    <header>
-    <h1><a href="">Max Blog</a></h1>
-    <nav>
-        <a href="">All Posts</a>
-    </nav>
-    </header>
-    <h1>Welcome to my Block page</h1>
+    <section id="welcome">
+      <header>
+          <img src="{% static 'blog/images/img.jpg' %}" alt="Paul - The Author">
+          <h2>Paul's Blog</h2>
+      </header>
+        <p>Hi, I am Paul and I love to blog about tech and the world</p>
+    </section>
+
+    <section id="latest-posts">
+    <h2>My Latest Thoughts</h2>
+    <ul>
+        {% for post in posts %}
+            {% include "blog/include/post.html" %}
+        {% endfor %}
+    </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I Do</h2>
+        <p>I love programming ...</p>
+        <p>Some text from course ...</p>
+    </section>
 {% endblock %}
